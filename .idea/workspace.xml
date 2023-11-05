@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9eb95da-860b-41f2-b308-1ff7c8def52b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/counter.py" beforeDir="false" afterPath="$PROJECT_DIR$/counter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/show_time_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/show_time_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/counter.html" beforeDir="false" afterPath="$PROJECT_DIR$/counter.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,9 +12,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -70,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701362132466</updated>
-      <workItem from="1701362140572" duration="14636000" />
+      <workItem from="1701362140572" duration="15102000" />
     </task>
     <servers />
   </component>
