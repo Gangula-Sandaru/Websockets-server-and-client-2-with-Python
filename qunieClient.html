@@ -13,7 +13,12 @@
     <button onclick="sendToSpecificUser()">Send to Specific User</button><br>
 
     <div style="text-align: center"><h1 id="conn_title"> </h1></div>
-     <div style="text-align: left"><h3 id="inMGS"> </h3></div>
+     <div style="text-align: left">
+         <ul id="inMGS">
+
+         </ul>
+
+     </div>
 
     <script>
         let websocket;
@@ -28,7 +33,18 @@
             };
 
             websocket.onmessage = function(event) {
-                document.getElementById("inMGS").textContent = `Received: ${event.date}`
+                console.log("Received message:", event.data);
+                let Rmessages = event.data;
+
+                let ItemsList = document.createElement("li");
+                ItemsList.textContent = `R: ${Rmessages}`;
+
+                let mgslist = document.getElementById("inMGS");
+                mgslist.appendChild(ItemsList);
+                // let mgsList;
+                // let mgs = `R: ${event.date}`;
+                //
+                // document.getElementById("inMGS").textContent = mgsList.appendChild(mgs);
             };
 
             websocket.onclose = function(event) {
