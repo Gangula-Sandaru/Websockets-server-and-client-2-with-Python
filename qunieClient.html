@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>WebSocket Example</title>
 </head>
 <body>
-$END$
+    <input type="text" id="userIdInput" placeholder="Enter User ID"><br>
+    <button onclick="connectWebSocket()">Connect</button><br>
+    <input type="text" id="messageInput" placeholder="Type a message"><br>
+<!--    <button onclick="sendMessage()">Send</button><br>-->
+    <button onclick="broadcastMessage()">Broadcast</button><br>
+    <input type="text" id="specificUserIdInput" placeholder="Enter Specific User ID">
+    <button onclick="sendToSpecificUser()">Send to Specific User</button><br>
+
+    <div style="text-align: center"><h1 id="conn_title"> </h1></div>
+     <div style="text-align: left">
+         <ul id="inMGS">
+
+         </ul>
+
+     </div>
+
+    <script>
+        let websocket;
+
+        function connectWebSocket() {
+            const userId = document.getElementById('userIdInput').value;
+            websocket = new WebSocket(`ws://localhost:8765/${userId}`);
+
+            websocket.onopen = function(event) {
+                console.log("WebSocket connected");
+                document.getElementById("conn_title").textContent = `User ${userId} is Connected to the server.`
+            };
+
+            websocket.onmessage = function(event) {
+                console.log("Received message:", event.data);
+                let Rmessages = event.data;
+
+                let ItemsList = document.createElement("li");
+                ItemsList.textContent = `R: ${Rmessages}`;
+
+                let mgslist = document.getElementById("inMGS");
+                mgslist.appendChild(ItemsList);
+                // let mgsList;
+                // let mgs = `R: ${event.date}`;
+                //
+                // document.getElementById("inMGS").textContent = mgsList.appendChild(mgs);
+            };
+
+            websocket.onclose = function(event) {
+                console.log("WebSocket closed");
+                document.getElementById("conn_title").textContent = `User ${userId} is Disconnected.`
+            };
+        }
+        //
+        // function sendMessage() {
+        //     const message = document.getElementById('messageInput').value;
+        //     websocket.send(message);
+        // }
+
+        function broadcastMessage() {
+            const message = document.getElementById('messageInput').value;
+            websocket.send(`Broadcast: ${message}`);
+        }
+
+        function sendToSpecificUser() {
+            const specificUserId = document.getElementById('specificUserIdInput').value;
+            const message = document.getElementById('messageInput').value;
+            websocket.send(`Specific:${specificUserId}:${message}`);
+        }
+    </script>
 </body>
 </html>
